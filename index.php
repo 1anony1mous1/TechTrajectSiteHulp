@@ -1,5 +1,8 @@
+<?php
+include "includes/discord.inc.php";
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 
 <head>
   <meta charset="UTF-8" />
@@ -10,49 +13,13 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
-  <style>
-    .custom-text {
-      color: white;
-      -webkit-text-stroke-width: 1px;
-      -webkit-text-stroke-color: black;
-    }
-
-    @font-face {
-      font-family: girlroysemibold;
-      src: url(Gilroy-SemiBold.woff);
-      font-weight: bold;
-    }
-
-    .custom-font {
-      font-family: girlroysemibold !important;
-    }
-
-    .gradienteffect {
-      background: linear-gradient(135deg, rgba(245, 214, 250, 0.5) 2.88%, rgba(230, 224, 254, 0.5) 98.14%);
-      width: 500px !important;
-      height: 500px !important;
-    }
-
-    /* For Webkit-based browsers (Chrome, Safari and Opera) */
-    .scrollbar-hide::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* For IE, Edge and Firefox */
-    .scrollbar-hide {
-      -ms-overflow-style: none;
-      /* IE and Edge */
-      scrollbar-width: none;
-      /* Firefox */
-    }
-  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
 <body class="max-w-screen px-1">
 
   <div class="overflow-hidden">
-    <svg width="814" height="834" viewBox="0 0 814 834" fill="none" xmlns="http://www.w3.org/2000/svg"
-    class="absolute top-0 left-0 z-0">
+  <svg viewBox="0 0 814 834" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute top-0 left-0 z-0">
     <g filter="url(#filter0_f_104_157)">
       <path fill-rule="evenodd" clip-rule="evenodd"
         d="M295.115 59.1601C344.418 64.1227 399.334 40.4798 441.012 67.2809C482.661 94.0626 488.246 151.559 508.835 196.591C527.488 237.392 545.396 276.528 556.545 319.983C570.739 375.303 618.533 441.446 583.159 486.285C545.494 534.028 461.66 487.789 405.59 511.331C359.85 530.535 342.527 592.628 295.115 607.223C243.654 623.064 186.93 613.909 136.883 594.048C82.7959 572.583 15.6167 546.343 0.266022 490.214C-15.9307 430.991 59.9401 381.348 61.9299 319.983C63.8166 261.798 -2.69996 212.564 11.1028 156.008C24.7487 100.095 76.7396 54.6731 131.214 36.0975C184.338 17.982 239.269 53.5388 295.115 59.1601Z"
@@ -76,40 +43,9 @@
 
   <div class="absolute left-0 top-0 z-10 sm:z-50 w-full">
     <header class="container mx-auto mt-4">
-      <nav class="border-gray-200">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="/image.png" class="h-10" alt="Flowbite Logo" />
-          </a>
-          <button data-collapse-toggle="navbar-default" type="button"
-            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-            aria-controls="navbar-default" aria-expanded="false">
-            <span class="sr-only">Open main menu</span>
-            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M1 1h15M1 7h15M1 13h15" />
-            </svg>
-          </button>
-          <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul
-              class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0">
-              <li>
-                <a href="#"
-                  class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
-                  aria-current="page">Jaïr's projecten</a>
-              </li>
-              <li>
-                <a href="#"
-                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Nieuwsbrief</a>
-              </li>
-              <li>
-                <a href="#"
-                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Gear</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <?php
+      include "includes/ui/menu.inc.php";
+      ?>
     </header>
     <section class="mt-32">
       <h1
@@ -117,7 +53,7 @@
         id="title"></h1>
       <p class="text-xl text-center mt-8">
         Leer en creeër samen, ongeacht je ervaring.<br />Met al
-        <span id="members"></span> Discord leden.
+        <?=getdiscorduseramount()?> Discord leden.
       </p>
       <div class="text-center mt-6 flex justify-center gap-2">
         <a class="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 active:bg-slate-800 active:text-slate-300 focus-visible:outline-slate-900"
@@ -148,46 +84,12 @@
   </div>
 
   <div class="h-screen"></div>
-  <section class="max-w-screen container mx-auto">
-    <div class="max-w-screen-xl mx-auto px-2">
-      <h1 class="text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl text-black custom-font font-bold">
-        &lt;&gt;<span class="custom-text">PRO</span>JECTEN&lt;<span class="font-black">&sol;</span>&gt;
-      </h1>
-      <p>Om zelf te leren programmeren ben ik begonnen door oefenprojecten te bouwen en deze processen te delen op
-        Youtube. Om te zien met welk project ik nu bezig ben kun je mijn laatste Youtube videos kijken, het
-        #project-updates kanaal op Discord checken of abonneren op mijn nieuwsbrief.</p>
-    </div>
-  </section>
+  <?php
+  include "sections/projecten.php";
+  ?>
 
-  <script src="/typewrite.js"></script>
-  <script>
-    var url =
-      "https://discord.com/api/v10/invites/jsz7uV4JMz?with_counts=true&with_expiration=true";
-
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        json = JSON.parse(xhttp.responseText);
-
-        document.getElementById("members").innerText =
-          json.approximate_member_count;
-      }
-    };
-    xhttp.open("GET", url, true);
-    xhttp.send();
-    var title = document.getElementById("title");
-
-    var typewriter = new Typewriter(title, {
-      delay: 75,
-    });
-
-    typewriter
-      .typeString(
-        'De <span class="custom-text">community</span> voor software ontwikkelaars.'
-      )
-      .pauseFor(300)
-      .start();
-  </script>
+  <script src="/assets/js/typewrite.js"></script>
+  <script src="/assets/js/script.js"></script>
 </body>
 
 </html>

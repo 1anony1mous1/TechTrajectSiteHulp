@@ -1,0 +1,34 @@
+.custom-text {
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+  }
+
+  @font-face {
+    font-family: girlroysemibold;
+    src: url(/assets/fonts/Gilroy-SemiBold.woff);
+    font-weight: bold;
+  }
+
+  .custom-font {
+    font-family: girlroysemibold !important;
+  }
+
+  .gradienteffect {
+    background: linear-gradient(135deg, rgba(245, 214, 250, 0.5) 2.88%, rgba(230, 224, 254, 0.5) 98.14%);
+    width: 500px !important;
+    height: 500px !important;
+  }
+
+  /* For Webkit-based browsers (Chrome, Safari and Opera) */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
